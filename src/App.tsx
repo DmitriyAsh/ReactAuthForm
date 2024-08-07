@@ -1,7 +1,12 @@
 import './App.css';
+import ThemeButton from './components/UI/SwitcherThemeButton/ThemeButton';
 
 function App() {
-	return <></>;
+	return (
+		<>
+			<ThemeButton />
+		</>
+	);
 }
 
 export default App;
