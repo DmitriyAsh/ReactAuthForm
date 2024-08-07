@@ -1,10 +1,14 @@
 import './App.css';
-import ThemeButton from './components/UI/SwitcherThemeButton/ThemeButton';
+import { LoginForm } from './components/LoginForm/LoginForm';
+import ThemeButton from './components/ThemeButton';
 
 function App() {
 	return (
 		<>
-			<ThemeButton />
+			<LoginForm />
+			<div className='button-position'>
+				<ThemeButton />
+			</div>
 		</>
 	);
 }

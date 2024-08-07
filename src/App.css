@@ -3,3 +3,9 @@
 	margin: 0;
 	box-sizing: border-box;
 }
+
+.button-position {
+	position: fixed;
+	right: 10px;
+	top: 10px;
+}

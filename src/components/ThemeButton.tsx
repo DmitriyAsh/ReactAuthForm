@@ -15,9 +15,7 @@ const ThemeButton = () => {
 	return (
 		<>
 			<Button onClick={toggleColorScheme}>
-				{computedColorScheme === 'dark'
-					? 'Включить светлую тему'
-					: 'Включить темную тему'}
+				{computedColorScheme === 'dark' ? 'Light mode' : 'Dark mode'}
 			</Button>
 		</>
 	);
