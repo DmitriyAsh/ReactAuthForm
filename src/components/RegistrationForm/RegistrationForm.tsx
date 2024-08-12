@@ -11,12 +11,13 @@ import {
 import { matchesField, useForm } from '@mantine/form';
 import classes from './RegistrationForm.module.css';
 import axios from 'axios';
+import { notifications } from '@mantine/notifications';
 
-export interface IChangeVisible {
+interface IChangeFormVisible {
 	changeFormVisible: (value: boolean) => void;
 }
 
-export function RegistrationForm({ changeFormVisible }: IChangeVisible) {
+export function RegistrationForm({ changeFormVisible }: IChangeFormVisible) {
 	const handleChangeFormVisible = () => {
 		changeFormVisible(false);
 	};
@@ -40,14 +41,25 @@ export function RegistrationForm({ changeFormVisible }: IChangeVisible) {
 	});
 
 	const userRegistration = async (user: object) => {
-		await axios
-			.post('http://20.205.178.13:8001/registration/', user)
-			.then((resp) => console.log(resp))
-			.catch((err) => console.log(err));
+		try {
+			const response = await axios({
+				url: 'http://20.205.178.13:8001/registration/',
+				data: user,
+				method: 'post',
+			});
+			console.log(response);
+			handleChangeFormVisible();
+			notifications.show({
+				message: 'You have succsesfully registered!',
+				position: 'bottom-right',
+			});
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	return (
-		<Container size={420} my={400}>
+		<Container size={420} my={100}>
 			<Title ta='center' className={classes.title}>
 				Create an account
 			</Title>
