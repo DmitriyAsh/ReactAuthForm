@@ -14,16 +14,21 @@ import axios from 'axios';
 
 interface IChangeVisible {
 	changeFormVisible: (value: boolean) => void;
+	changeIsAuth: (value: boolean) => void;
 }
 
-export function AuthForm({ changeFormVisible }: IChangeVisible) {
+export function AuthForm({ changeFormVisible, changeIsAuth }: IChangeVisible) {
 	const handleChangeFormVisible = () => {
 		changeFormVisible(true);
 	};
 
+	const handeChangeIsAuth = () => {
+		changeIsAuth(true);
+	};
+
 	const form = useForm({
 		mode: 'uncontrolled',
-		initialValues: { password: '', email: '', repeat_password: '' },
+		initialValues: { password: '', email: '' },
 
 		validate: {
 			password: (value) =>
@@ -43,6 +48,7 @@ export function AuthForm({ changeFormVisible }: IChangeVisible) {
 				method: 'post',
 			});
 			console.log(res);
+			handeChangeIsAuth();
 		} catch (error) {
 			console.log(error);
 		}
