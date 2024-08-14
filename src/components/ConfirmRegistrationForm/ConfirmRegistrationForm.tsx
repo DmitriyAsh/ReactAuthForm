@@ -43,8 +43,8 @@ export function ConfirmRegistrationForm({ handleChangeFormVisible }: IProps) {
 					})}
 				>
 					<TextInput
-						label='Email'
-						placeholder='example@mail.ru'
+						label='Confirmation code'
+						placeholder='Your code'
 						required
 						key={form.key('confirmation_code')}
 						{...form.getInputProps('confirmation_code')}
